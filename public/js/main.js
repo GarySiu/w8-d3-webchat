@@ -1,12 +1,5 @@
 $(document).ready(function(){
   console.log('Dom loaded')
-  $('#send').on('click', function(){
-    event.preventDefault()
-    console.log('clicked!')
-  })
-
-
-
 
   var socket = io()
 
@@ -17,4 +10,16 @@ $(document).ready(function(){
   socket.on('disconnect', function(){
     console.log('Disconnected')
   })
+
+  socket.on('channel', function(msg){
+    $('#messages').append('<li>' + msg + '</li>')
+  })
+
+  $('#send').on('click', function(){
+    event.preventDefault()
+    // console.log('clicked!')
+    socket.emit('channel', $('#chatbox').val())
+    $('#chatbox').val('')
+  })
+
 })

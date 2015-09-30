@@ -5,18 +5,21 @@ var bodyParser = require('body-parser')
 var server = require('http').Server(app)
 var io = require('socket.io')(server)
 
-
 app.use(express.static(__dirname + '/public'))
 
-app.get('/', function(req,res){
-  res.send('Hello World!')
-})
+// app.get('/', function(req,res){
+//   res.send('Hello World!')
+// })
 
 io.on('connection', function(socket){
   console.log('A user connected')
 
   socket.on('disconnect', function(){
     console.log('A user disconnected')
+  })
+
+  socket.on('channel', function(msg){
+    io.emit('channel', msg)
   })
 })
 
