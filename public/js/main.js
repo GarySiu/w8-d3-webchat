@@ -19,7 +19,7 @@ $(document).ready(function(){
     event.preventDefault()
     // console.log('clicked!')
     socket.emit('channel', $('#chatbox').val())
-    $('#chatbox').val('')
+    $('#chatbox').val('').focus()
   })
 
 })

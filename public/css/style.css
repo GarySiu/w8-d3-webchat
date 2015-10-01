@@ -1,0 +1,31 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 1em;
+}
+
+#chat-input {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+#chatbox {
+  width: 90%;
+  margin: .5%;
+}
+
+#send {
+  width: 7%;
+}
+
+#messages {
+  list-style-type: none;
+}
